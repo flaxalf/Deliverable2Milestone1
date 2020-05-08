@@ -1,0 +1,10 @@
+language: java
+jdk:
+    -openjdk8
+addons:
+  sonarcloud:
+    organization: "flaxalf"
+    token: "c4f79b4f852cfccc16d657d82ee108fbf4133d1f"
+script:
+- ant build
+- sonar-scanner
