@@ -13,11 +13,10 @@ import java.util.logging.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import flow.Main;
 import logic.Release;
 
 public class DataStructures {
-	private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
+	private static final Logger LOGGER = Logger.getLogger(DataStructures.class.getName());
 	
 	private DataStructures() {
 	      //not called

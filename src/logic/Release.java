@@ -5,8 +5,9 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -42,12 +43,10 @@ public class Release {
 			}
 		}
 		// order releases by date
-		Collections.sort(releases, new Comparator<LocalDateTime>(){
-			//@Override
-			public int compare(LocalDateTime o1, LocalDateTime o2) {
+		Collections.sort(releases, (LocalDateTime o1, LocalDateTime o2) -> {
 				return o1.compareTo(o2);
-			}
 		});
+		
 		numVersions = releases.size();
 	}
 
@@ -60,7 +59,7 @@ public class Release {
 		releaseID.put(dateTime, id);
 	}
 
-	public HashMap<LocalDateTime, String> getReleaseNames() {
+	public Map<LocalDateTime, String> getReleaseNames() {
 		return releaseNames;
 	}
 
@@ -68,7 +67,7 @@ public class Release {
 		return releaseID;
 	}
 
-	public ArrayList<LocalDateTime> getReleases() {
+	public List<LocalDateTime> getReleases() {
 		return releases;
 	}
 
