@@ -23,13 +23,13 @@ public class Release {
 	public Release(String projName) throws JSONException, IOException {
 		//Fills the arraylist with releases dates and orders them
 		//Ignores releases with missing dates
-		releases = new ArrayList<LocalDateTime>();
+		releases = new ArrayList<>();
 		Integer i;
 		String url = "https://issues.apache.org/jira/rest/api/2/project/" + projName;
 		JSONObject json = DataStructures.readJsonFromUrl(url);
 		JSONArray versions = json.getJSONArray("versions");
-		releaseNames = new HashMap<LocalDateTime, String>();
-		releaseID = new HashMap<LocalDateTime, String> ();
+		releaseNames = new HashMap<>();
+		releaseID = new HashMap<> ();
 		for (i = 0; i < versions.length(); i++ ) {
 			String name = "";
 			String id = "";
