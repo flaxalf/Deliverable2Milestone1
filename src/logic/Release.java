@@ -61,7 +61,7 @@ public class Release {
 		return releaseNames;
 	}
 
-	public HashMap<LocalDateTime, String> getReleaseID() {
+	public Map<LocalDateTime, String> getReleaseID() {
 		return releaseID;
 	}
 

@@ -45,11 +45,8 @@ public class DataStructures {
 		Integer numVersions = rel.getReleases().size();
 		if (numVersions < 6)
 			return;
-		FileWriter fileWriter = null;
-		try {
-			fileWriter = null;
+		try (FileWriter fileWriter = new FileWriter(pathCsv)) {
 			//Name of CSV for output
-			fileWriter = new FileWriter(pathCsv);
 			fileWriter.append("Index,Version ID,Version Name,Date");
 			fileWriter.append("\n");
 			for (Integer i = 0; i < numVersions; i++) {
@@ -66,13 +63,6 @@ public class DataStructures {
 
 		} catch (Exception e) {
 			LOGGER.warning("Error in csv writer"+e.getMessage());
-		} finally {
-			try {
-				fileWriter.flush();
-				fileWriter.close();
-			} catch (IOException e) {
-				LOGGER.warning("Error while flushing/closing fileWriter !!!"+e.getMessage());
-			}
 		}
 	}
 }
