@@ -7,21 +7,27 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.URL;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.util.logging.Logger;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import flow.Main;
 import logic.Release;
 
 public class DataStructures {
+	private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
+	
+	private DataStructures() {
+	      //not called
+	   }
+	
 	public static JSONObject readJsonFromUrl(String url) throws IOException, JSONException {
 		InputStream is = new URL(url).openStream();
-		try {
-			BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
+		try (BufferedReader rd = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))) {
 			String jsonText = readAll(rd);
-			JSONObject json = new JSONObject(jsonText);
-			return json;
+			return new JSONObject(jsonText);
 		} finally {
 			is.close();
 		}
@@ -60,15 +66,13 @@ public class DataStructures {
 			}
 
 		} catch (Exception e) {
-			System.out.println("Error in csv writer");
-			e.printStackTrace();
+			LOGGER.warning("Error in csv writer"+e.getMessage());
 		} finally {
 			try {
 				fileWriter.flush();
 				fileWriter.close();
 			} catch (IOException e) {
-				System.out.println("Error while flushing/closing fileWriter !!!");
-				e.printStackTrace();
+				LOGGER.warning("Error while flushing/closing fileWriter !!!"+e.getMessage());
 			}
 		}
 	}

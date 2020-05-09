@@ -49,8 +49,6 @@ public class Release {
 			}
 		});
 		numVersions = releases.size();
-		
-		return;
 	}
 
 	public void addRelease(String strDate, String name, String id) {
@@ -60,7 +58,6 @@ public class Release {
 			releases.add(dateTime);
 		releaseNames.put(dateTime, name);
 		releaseID.put(dateTime, id);
-		return;
 	}
 
 	public HashMap<LocalDateTime, String> getReleaseNames() {
