@@ -43,9 +43,7 @@ public class Release {
 			}
 		}
 		// order releases by date
-		Collections.sort(releases, (LocalDateTime o1, LocalDateTime o2) -> {
-				return o1.compareTo(o2);
-		});
+		Collections.sort(releases, ((LocalDateTime o1, LocalDateTime o2) -> o1.compareTo(o2)));
 		
 		numVersions = releases.size();
 	}
